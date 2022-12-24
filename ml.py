@@ -16,7 +16,6 @@ pipe = StableDiffusionPipeline.from_pretrained(
 
 pipe.to("cuda")
 prompt = "a photograph of an astronaut riding a whale"
-image = pipe(prompt)["sample"][0]
 
 
 def obtain_image(
@@ -35,3 +34,6 @@ def obtain_image(
         generator=generator,
     ).images[0]
     return image
+
+
+image = obtain_image(prompt, num_inference_steps=5, seed=1024)
